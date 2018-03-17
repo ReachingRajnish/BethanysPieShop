@@ -1,0 +1,53 @@
+
+Building your first ASP.NET Core 2 MVC application with Visual Studio 2017
+--------------------------------------------------------------------------
+
+Snippets Module 5
+-----------------
+
+HomeController.cs
+-----------------
+
+public IActionResult Details(int id)
+{
+	var pie = _pieRepository.GetPieById(id);
+	if (pie == null)
+		return NotFound();
+
+	return View(pie);
+}
+
+
+Details.cshtml
+--------------
+
+@model Pie
+
+
+<h2>@Model.Name</h2>
+
+<div class="thumbnail">
+    <img alt="@Model.Name" src="@Model.ImageUrl">
+    <div class="caption-full">
+        <h3 class="pull-right">@Model.Price</h3>
+        <h3>
+            <a href="#">@Model.Name</a>
+        </h3>
+        <h4>@Model.ShortDescription</h4>
+        <p>@Model.LongDescription</p>
+    </div>
+</div>
+
+
+Layout.cshtml
+-------------
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li><a asp-controller="Home" asp-action="Index" class="navbar-brand">Bethany's Pie Shop</a></li>
+
+			</ul>
+		</div>
+	</div>
+</nav>
